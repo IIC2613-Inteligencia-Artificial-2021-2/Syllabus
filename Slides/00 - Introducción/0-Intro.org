@@ -1,0 +1,99 @@
+#+title: Class Introduction
+#+author:
+#+email: ddaroch@ing.puc.cl
+#+language: en
+#+date: AI - 2021 H2
+#+REVEAL_ROOT: reveal.js/
+
+* Tasks                                                            :noexport:
+** TODO Write Introduction
+   SCHEDULED: <2021-08-01 Sun>
+** TODO Practice Introduction
+   SCHEDULED: <2021-08-14 Sun>
+** TODO Teach Introduction
+   SCHEDULED: <2021-08-16 Mon>
+
+
+* Setup                                                            :noexport:
+  #+SEQ_TODO: TODO REVIEW | DONE
+
+  # ##Local Variables:
+  # ##eval: (add-hook 'after-save-hook (org-reveal-export-to-html))
+  # ##eval: (add-hook 'after-save-hook (org-pandoc-export-to-beamer-pdf))
+  # ##End:
+
+* Config                                                          :noexport:
+  #+STARTUP: overview
+
+** Numbering
+   #+OPTIONS: toc:nil
+   # Remove numbering from sections and subsections
+   #+OPTIONS: num:nil
+
+** Reveal
+   #+REVEAL_HLEVEL: 2
+   #+REVEAL_SPEED: 2
+   #+OPTIONS: reveal_slide_number:h.v
+
+   #+REVEAL_EXTRA_CSS: ./style.css
+
+   # Adding plugins without their dependencies might break your slides
+   #+REVEAL_EXTRA_JS: { src: 'plugin/math/math.js', async: true }, { src: 'plugin/zoom-js/zoom.js', async: true }
+   #+REVEAL_PLUGINS: (highlight markdown notes)
+
+*** Looks
+    #+REVEAL_TRANS: slide
+    # Theme (black moon night blood)
+    #+REVEAL_THEME: black
+    # Target 1366x768, 16:9 and not far from 1024x768 widely used on projectors
+    #+OPTIONS: reveal_width:1366 reveal_height:768
+    # #+REVEAL_EXTRA_CSS: custom.css
+*** Reveal
+    #+OPTIONS: reveal_center:t
+    #+OPTIONS: reveal_progress:t
+    #+OPTIONS: reveal_history:nil
+    #+OPTIONS: reveal_control:t
+    #+OPTIONS: reveal_rolling_links:t
+    #+OPTIONS: reveal_keyboard:t
+    #+OPTIONS: reveal_overview:t
+
+** Beamer
+   #+BEAMER_THEME: Rochester [height=20pt]
+   # #+OPTIONS: H:2
+   # #+OPTIONS:   H:3 num:t toc:t \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+
+* The class
+  SCHEDULED: <2021-08-16 Mon 07:00>
+** Introduction
+*** Professors
+    - Dietrich Daroch
+    - Álvaro Soto
+*** Class
+    #+ATTR_REVEAL: :frag (appear)
+    - Who are you?
+    - What do you expect?
+    - Do you know about AI?
+    - [[https://forms.gle/pK7jrTXHVjFQTxa86][Tell us about you]].
+*** AI                                                             :noexport:
+    - What problems does it tackle?
+*** Videos                                                         :noexport:
+    - Robots: https://www.youtube.com/watch?v=ssZ_8cqfBlE
+** Course Information
+*** Evaluation
+    #+ATTR_REVEAL: :frag (appear)
+    - Final Grade: ${F} =  0.7*A + 0.3*Q$
+      #+ATTR_REVEAL: :frag (appear)
+      - Assignments: ${A} = {\sum_{i=1}^4{a_i} \over 4}$
+      - Quizzes: ${Q} \approx {\sum_{i=1}^N{q_i} \over N}$
+*** Bibliography
+    - Books
+      - [[http://aima.cs.berkeley.edu/][Artificial Intelligence: A Modern Approach - Russell, Norvig. 2010]]
+      - [[https://www.deeplearningbook.org/][Deep Learning - Goodfellow, Bengio, Courville. 2016]]
+      - [[https://www.springer.com/gp/book/9780387310732][Pattern Recognition and Machine Learning - Bishop. 2006]]
+      - [[https://www.cs.cmu.edu/~tom/mlbook.html][Machine Learning - Mitchell. 1997]]
+    - non-Books
+      - [[https://potassco.org/doc/][Postdam Answer Set Solving Collection's Documentation]]
+*** Contact
+    - Emails
+      - Dietrich: [[mailto:ddaroch+ai-2021-2@ing.puc.cl][ddaroch@ing.puc.cl]]
+      - Álvaro: [[mailto:asoto+ai-2021-2@ing.puc.cl][asoto@ing.puc.cl]]

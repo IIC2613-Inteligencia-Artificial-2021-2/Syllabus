@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Search</title>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="../src/reveal.js/dist/reveal.css"/>
+
+<link rel="stylesheet" href="../src/reveal.js/dist/theme/black.css" id="theme"/>
+
+<link rel="stylesheet" href="../src/style.css"/>
+<link rel="stylesheet" href="../src/reveal.js/plugin/highlight/zenburn.css"/>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide">
+<h1 class="title">Search</h1><h2 class="date">AI - 2021 H2</h2><p class="date">Created: 2021-08-25 Wed 10:33</p>
+</section>
+
+<section>
+<section id="slide-org80b2dab">
+<h2 id="org80b2dab">Search Problem</h2>
+<div class="outline-text-2" id="text-org80b2dab">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org397f520">
+<h3 id="org397f520">Path-finding</h3>
+<p>
+Many interesting problems can be framed as Search problem in a Graph.
+</p>
+<ul>
+<li class="fragment appear">Nodes can represent specific states of a system/world/game.</li>
+<li class="fragment appear">Edges represent actions that transform the state from one node into another.</li>
+<li class="fragment appear">Example states:
+<ul>
+<li>Maze: Coordinates of the player.</li>
+<li>Chess: Board position, castling state and who's to play.</li>
+<li>Racing game: Points in \((t, \vec{x}, \vec{v}, \theta, \varphi, Gear, Pedals, Wheel)\).</li>
+<li>Poker: Cards and chips that each player has.</li>
+
+</ul></li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orgabcd993">
+<h3 id="orgabcd993">Sokoban</h3>
+</section>
+<section data-background-iframe="https://www.youtube.com/embed/n9YzAK-nuB4?start=25" data-background-interactive>
+</section>
+</section>
+<section>
+<section id="slide-orgbba2cc3">
+<h3 id="orgbba2cc3">Taxonomy</h3>
+<ul>
+<li class="fragment appear">Mode
+<ul>
+<li>Cooperative</li>
+<li>Adversarial</li>
+
+</ul></li>
+<li class="fragment appear">Knowledge
+<ul>
+<li>Total</li>
+<li>Partial</li>
+
+</ul></li>
+<li class="fragment appear">Determinism
+<ul>
+<li>Deterministic environment</li>
+<li>Non-Deterministic environment</li>
+
+</ul></li>
+<li class="fragment appear">Ply (turn) time horizon
+<ul>
+<li>Real-time</li>
+<li>Unbounded</li>
+
+</ul></li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orgf003f47">
+<h3 id="orgf003f47">Examples</h3>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Game</th>
+<th scope="col" class="org-left">Mode</th>
+<th scope="col" class="org-left">Knowledge</th>
+<th scope="col" class="org-left">Determinism</th>
+<th scope="col" class="org-left">Time horizon</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Maze</td>
+<td class="org-left">Cooperative</td>
+<td class="org-left">Total</td>
+<td class="org-left">Deterministic</td>
+<td class="org-left">Unbounded</td>
+</tr>
+
+<tr>
+<td class="org-left">Sokoban</td>
+<td class="org-left">Cooperative</td>
+<td class="org-left">Total</td>
+<td class="org-left">Deterministic</td>
+<td class="org-left">Unbounded</td>
+</tr>
+
+<tr>
+<td class="org-left">Time-trial Racing</td>
+<td class="org-left">Cooperative</td>
+<td class="org-left">Total</td>
+<td class="org-left">Deterministic</td>
+<td class="org-left">Real-time</td>
+</tr>
+
+<tr>
+<td class="org-left">Freecell</td>
+<td class="org-left">Cooperative</td>
+<td class="org-left">Partial</td>
+<td class="org-left">Non-Deterministic</td>
+<td class="org-left">Unbounded</td>
+</tr>
+</tbody>
+</table>
+
+</section>
+<section>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Game</th>
+<th scope="col" class="org-left">Mode</th>
+<th scope="col" class="org-left">Knowledge</th>
+<th scope="col" class="org-left">Determinism</th>
+<th scope="col" class="org-left">Time horizon</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Racing</td>
+<td class="org-left">Adversarial</td>
+<td class="org-left">Total</td>
+<td class="org-left">Deterministic</td>
+<td class="org-left">Real-time</td>
+</tr>
+
+<tr>
+<td class="org-left">Chess</td>
+<td class="org-left">Adversarial</td>
+<td class="org-left">Total</td>
+<td class="org-left">Deterministic</td>
+<td class="org-left">Real-time</td>
+</tr>
+
+<tr>
+<td class="org-left">Among Us</td>
+<td class="org-left">Adversarial</td>
+<td class="org-left">Partial</td>
+<td class="org-left">Deterministic*</td>
+<td class="org-left">Real-time</td>
+</tr>
+
+<tr>
+<td class="org-left">CS:GO</td>
+<td class="org-left">Adversarial</td>
+<td class="org-left">Partial</td>
+<td class="org-left">Deterministic*</td>
+<td class="org-left">Real-time</td>
+</tr>
+
+<tr>
+<td class="org-left">Liar's Dice</td>
+<td class="org-left">Adversarial</td>
+<td class="org-left">Partial</td>
+<td class="org-left">Non-Deterministic</td>
+<td class="org-left">Real-time</td>
+</tr>
+
+<tr>
+<td class="org-left">Uno</td>
+<td class="org-left">Adversarial</td>
+<td class="org-left">Partial</td>
+<td class="org-left">Non-Deterministic</td>
+<td class="org-left">Real-time</td>
+</tr>
+</tbody>
+</table>
+
+<aside class="notes">
+<p>
+Enter speaker notes here.
+</p>
+
+</aside>
+
+</section>
+</section>
+<section>
+<section id="slide-org4ac003e">
+<h3 id="org4ac003e">Problem Terminology</h3>
+<p>
+We will need some common terms to talk about path-finding.
+</p>
+<ul>
+<li class="fragment appear">State: A specific configuration of a system.
+<ul>
+<li>Chess: The board* and who's to play.</li>
+
+</ul></li>
+<li class="fragment appear">Action: An specific action that transforms the system's State.
+<ul>
+<li>Chess: A move by the active player.</li>
+
+</ul></li>
+<li class="fragment appear">Search space: The space where points are system states. Related to the
+<code>class</code> that represents the state.
+<ul>
+<li>Chess: A way of representing all chess states, like all <a href="https://en.wikipedia.org/wiki/Forsyth%E2%80%93Edwards_Notation">FEN</a> positions.</li>
+
+</ul></li>
+<li class="fragment appear">Search state graph: The graph connecting states through actions.
+<ul>
+<li>Chess: A huge graph where edges are chess moves from one state to another.</li>
+
+</ul></li>
+
+</ul>
+
+<aside class="notes">
+<p>
+Chess has some subtleties, like castling and draw by repetition.
+</p>
+
+</aside>
+
+</section>
+</section>
+<section>
+<section id="slide-orga5af556">
+<h3 id="orga5af556">Search terminology</h3>
+<ul>
+<li class="fragment appear">Search problem: \((Space, start, goal)\)
+<ul>
+<li>Chess start: The state representing the starting board position.</li>
+<li>Chess goal: A function that checks for check-mates</li>
+
+</ul></li>
+<li class="fragment appear">Search Tree: The spanning tree of Nodes representing paths on the State
+graph. Built throughout the Search by adding Nodes or updating edges.</li>
+<li class="fragment appear">Expansion: To compute the possible actions that may be performed and their
+resulting states.</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org687aed6">
+<h3 id="org687aed6">A generic search algorithm</h3>
+<div class="org-src-container">
+
+<pre class="fragment (appear)"><code class="python" >def generic_search_sketch(g: Graph, starting_node, goal_function) -&gt; Solution:
+    Closed = set()  # Closed: Explored nodes (We only store the state)
+    Open = MagicalCollection()  # Open: Known, but still unexplored Nodes
+    Open.add(starting_node)
+
+    while Open:
+        node = Open.pop()  # Takes a node from Open. Which one?
+        if is_goal(node):
+            return path(node)
+
+        Closed.add(node)
+        for n in node.neighbors():  # Creates Nodes around node.state
+            if n.state in Closed:
+                continue
+             Open.upsert(n)  # Insert|Update to keep Nodes a Spanning Tree
+
+    return None
+</code></pre>
+</div>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org522450e">
+<h2 id="org522450e">Search Algorithms</h2>
+<div class="outline-text-2" id="text-org522450e">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org312412b">
+<h3 id="org312412b">Depth-first Search</h3>
+<div class="outline-text-3" id="text-org312412b">
+</div>
+</section>
+<section id="slide-orge5de551">
+<h4 id="orge5de551">A simple implementation</h4>
+<div class="org-src-container">
+
+<pre><code class="python" >def _dfs(g: Graph, state: State, q: Query, p: Path) -&gt; Path:
+    """Naive-DFS. Might get stuck in a loop."""
+    if q.isGoal(state):
+        return p
+
+    for s in g.neighbors(state):
+        path = _dfs(g, s, q, p+s)
+        if path:
+            return path
+
+    return None
+
+def dfs(g: Graph, s: State, q: Query):
+    return _dfs(g, s, q, Path())
+</code></pre>
+</div>
+
+</section>
+<section id="slide-org8f3e290">
+<h4 id="org8f3e290">DFS v2 - Loop-safe</h4>
+<div class="org-src-container">
+
+<pre><code class="python" >def _loop_free_dfs(g: Graph, state: State, q: Query, p: Path, visited: Set[State]) -&gt; Path:
+    """Simple-DFS. Checks for loops, but it might run into a Stack Overflow."""
+    if q.isGoal(state):
+        return g.path_to(state)  # Retrieve the path to state
+
+    if state in visited
+        return None
+    visited.add(state)
+
+    for a, s in g.neighbors(state):
+        path = _loop_free_dfs(g, s, q, p+a)
+        if path:
+            return path
+
+    return None
+
+def loop_free_dfs(g: Graph, s: State, q: Query) -&gt; Path:
+    return _loop_free_dfs(g, s, q, Path(), set())
+</code></pre>
+</div>
+
+</section>
+<section id="slide-org304aced">
+<h4 id="org304aced">DFS v3 - Bounded stack</h4>
+<div class="org-src-container">
+
+<pre><code class="python" >def loop_free_recursion_free_dfs(g: Graph, start: State, q: Query, p: Path) -&gt; Path:
+    """DFS with loop detection and no recursion. Now a Generic Search using a Stack."""
+    Closed = set()
+    Open = Stack()
+    Open.push(start)
+    g.reach(start, action=None, parent=None)
+
+    while not Open.empty():
+        state = Open.pop()
+
+        if q.isGoal(state):
+            return g.path_to(state)  # Retrieve the path to state
+
+        for a, s in s.neighbors():
+            if s in Closed:
+                continue
+            g.reach(s, action=a, parent=state)  # Update the path to s (if needed)
+            Open.push(s)
+
+    return None
+</code></pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org5f57437">
+<h3 id="org5f57437">Breadth-first Search</h3>
+<div class="outline-text-3" id="text-org5f57437">
+</div>
+</section>
+<section id="slide-org57fb5be">
+<h4 id="org57fb5be">A simple implementation</h4>
+<div class="org-src-container">
+
+<pre><code class="python" >def breadth_first_search(g: Graph, start: State, query: Query) -&gt; Path:
+    """BFS. A Generic Search using a Queue."""
+    Closed = set()
+    Open = Queue()
+    Open.push(start)
+    g.reach(start, action=None, parent=None)
+
+    while not Open.empty():
+        state = Open.pop()
+
+        if q.isGoal(state):
+            return g.path_to(state)  # Retrieve the path to state
+
+        for s in state.neighbors():
+            if s in Closed or s in Open:
+                continue
+            g.reach(s, action=a, parent=state)  # Record the path to s (if needed)
+            Open.push(s)
+
+    return None
+</code></pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org875d40e">
+<h3 id="org875d40e">Dijkstra's Algorithm</h3>
+<div class="outline-text-3" id="text-org875d40e">
+</div>
+</section>
+<section id="slide-org3ae85a9">
+<h4 id="org3ae85a9">A simple implementation</h4>
+<div class="org-src-container">
+
+<pre><code class="python" >def best_first_search(g: Graph, start: State, query: Query) -&gt; Path:
+    """Dijkstra's algorithm. Similar to BFS, but prefering lower costs.
+    It's just the  Generic Search using a cost-aware PriorityQueue."""
+    Closed = set()
+    Open = PriorityQueue()
+    Open.push(Node(start))
+
+    while not Open.empty():
+        node = Open.pop()
+
+        if q.isGoal(node.state):
+            return node.get_path()
+
+        for a, s in state.neighbors():
+            if s in Closed:
+                continue
+            n = Node(s, action=a, parent=state)
+            Open.upsert(n)  # Insert|Update to keep Nodes a Spanning Tree
+
+    return None
+</code></pre>
+</div>
+</section>
+</section>
+</div>
+</div>
+<script src="../src/reveal.js/dist/reveal.js"></script>
+<script src="../src/reveal.js/plugin/highlight/highlight.js"></script>
+<script src="../src/reveal.js/plugin/markdown/markdown.js"></script>
+<script src="../src/reveal.js/plugin/notes/notes.js"></script>
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'h.v',
+rollingLinks: true,
+keyboard: true,
+mouseWheel: false,
+fragmentInURL: false,
+hashOneBasedIndex: false,
+pdfSeparateFragments: true,
+overview: true,
+width: 1366,
+height: 768,
+
+transition: 'slide',
+transitionSpeed: '2',
+
+// Plugins with reveal.js 4.x
+plugins: [ RevealHighlight, RevealMarkdown, RevealNotes ],
+
+// Optional libraries used to extend reveal.js
+dependencies: [
+]
+
+});
+</script>
+</body>
+</html>

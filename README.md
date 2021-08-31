@@ -1,5 +1,11 @@
 # IIC2613 - Inteligencia Artificial
 
+## Clonar el repositorio
+Para poder visualizar las *Slides* correctamente deben clonar el repositorio recursivamente. Esto pueden hacerlo a través del siguiente comando:
+```console
+git clone --recurse-submodules https://github.com/IIC2613-Inteligencia-Artificial-2021-2/Syllabus.git
+```
+
 ## Equipo Docente
 
 A continuación, se muestra una tabla resumen del equipo docente de IIC2613 2021-2.

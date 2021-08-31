@@ -1,0 +1,276 @@
+#+title: Search
+#+author:
+#+email: ddaroch@ing.puc.cl
+#+language: en
+#+date: AI - 2021 H2
+#+REVEAL_ROOT: reveal.js/
+
+* Tasks                                                            :noexport:
+** TODO Prepare Slides
+** TODO Practice
+** TODO Teach
+* Config                                                           :noexport:
+  #+STARTUP: overview
+
+** Numbering
+   #+OPTIONS: toc:nil
+   # Remove numbering from sections and subsections
+   #+OPTIONS: num:nil
+
+** Reveal
+   #+REVEAL_HLEVEL: 2
+   #+REVEAL_SPEED: 2
+   #+OPTIONS: reveal_slide_number:h.v
+
+   #+REVEAL_EXTRA_CSS: ./style.css
+
+   # Adding plugins without their dependencies might break your slides
+   #+REVEAL_EXTRA_JS: { src: 'plugin/math/math.js', async: true }, { src: 'plugin/zoom-js/zoom.js', async: true }
+   #+REVEAL_PLUGINS: (highlight markdown notes)
+
+*** Looks
+    #+REVEAL_TRANS: slide
+    # Theme (black moon night blood)
+    #+REVEAL_THEME: black
+    # Target 1366x768, 16:9 and not far from 1024x768 widely used on projectors
+    #+OPTIONS: reveal_width:1366 reveal_height:768
+    # #+REVEAL_EXTRA_CSS: custom.css
+*** Reveal
+    #+OPTIONS: reveal_center:t
+    #+OPTIONS: reveal_progress:t
+    #+OPTIONS: reveal_history:nil
+    #+OPTIONS: reveal_control:t
+    #+OPTIONS: reveal_rolling_links:t
+    #+OPTIONS: reveal_keyboard:t
+    #+OPTIONS: reveal_overview:t
+
+** Beamer
+   #+BEAMER_THEME: Rochester [height=20pt]
+   # #+OPTIONS: H:2
+   # #+OPTIONS:   H:3 num:t toc:t \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+
+* Search Problem
+** Path-finding
+   Many interesting problems can be framed as Search problem in a Graph.
+   #+ATTR_REVEAL: :frag (appear)
+   - Nodes can represent specific states of a system/world/game.
+   - Edges represent actions that transform the state from one node into another.
+   - Example states:
+     - Maze: Coordinates of the player.
+     - Chess: Board position, castling state and who's to play.
+     - Racing game: Points in $(t, \vec{x}, \vec{v}, \theta, \varphi, Gear, Pedals, Wheel)$.
+     - Poker: Cards and chips that each player has.
+** Sokoban
+  #+REVEAL_HTML: </section>
+  #+REVEAL_HTML: <section data-background-iframe="https://www.youtube.com/embed/n9YzAK-nuB4?start=25" data-background-interactive>
+** Taxonomy
+	#+ATTR_REVEAL: :frag (appear)
+	- Mode
+ 		- Cooperative
+ 		- Adversarial
+	- Knowledge
+		- Total
+		- Partial
+	- Determinism
+		- Deterministic environment
+		- Non-Deterministic environment
+	- Ply (turn) time horizon
+		- Real-time
+		- Unbounded
+** Examples
+
+   |-------------------+-------------+-----------+-------------------+--------------|
+   | Game              | Mode        | Knowledge | Determinism       | Time horizon |
+   |-------------------+-------------+-----------+-------------------+--------------|
+   | Maze              | Cooperative | Total     | Deterministic     | Unbounded    |
+   | Sokoban           | Cooperative | Total     | Deterministic     | Unbounded    |
+   | Time-trial Racing | Cooperative | Total     | Deterministic     | Real-time    |
+   | Freecell          | Cooperative | Partial   | Non-Deterministic | Unbounded    |
+   |-------------------+-------------+-----------+-------------------+--------------|
+
+   #+REVEAL: split
+
+   |-------------+-------------+-----------+-------------------+--------------|
+   | Game        | Mode        | Knowledge | Determinism       | Time horizon |
+   |-------------+-------------+-----------+-------------------+--------------|
+   | Racing      | Adversarial | Total     | Deterministic     | Real-time    |
+   | Chess       | Adversarial | Total     | Deterministic     | Real-time    |
+   | Among Us    | Adversarial | Partial   | Deterministic*    | Real-time    |
+   | CS:GO       | Adversarial | Partial   | Deterministic*    | Real-time    |
+   | Liar's Dice | Adversarial | Partial   | Non-Deterministic | Real-time    |
+   | Uno         | Adversarial | Partial   | Non-Deterministic | Real-time    |
+   |-------------+-------------+-----------+-------------------+--------------|
+
+   #+LaTeX: \note{
+   #+BEGIN_NOTES
+   Enter speaker notes here.
+   #+END_NOTES
+   #+LaTeX: }
+
+** Problem Terminology
+   We will need some common terms to talk about path-finding.
+	 #+ATTR_REVEAL: :frag (appear)
+   - State: A specific configuration of a system.
+     - Chess: The board* and who's to play.
+   - Action: An specific action that transforms the system's State.
+     - Chess: A move by the active player.
+   - Search space: The space where points are system states. Related to the
+     ~class~ that represents the state.
+     - Chess: A way of representing all chess states, like all [[https://en.wikipedia.org/wiki/Forsyth%E2%80%93Edwards_Notation][FEN]] positions.
+   - Search state graph: The graph connecting states through actions.
+     - Chess: A huge graph where edges are chess moves from one state to another.
+
+   #+LaTeX: \note{
+   #+BEGIN_NOTES
+   Chess has some subtleties, like castling and draw by repetition.
+   #+END_NOTES
+   #+LaTeX: }
+
+** Search terminology
+	 #+ATTR_REVEAL: :frag (appear)
+   - Search problem: $(Space, start, goal)$
+     - Chess start: The state representing the starting board position.
+     - Chess goal: A function that checks for check-mates
+   - Search Tree: The spanning tree of Nodes representing paths on the State
+     graph. Built throughout the Search by adding Nodes or updating edges.
+   - Expansion: To compute the possible actions that may be performed and their
+     resulting states.
+
+** A generic search algorithm
+	 #+ATTR_REVEAL: :frag (appear)
+    #+begin_src python
+     def generic_search_sketch(g: Graph, starting_node, goal_function) -> Solution:
+         Closed = set()  # Closed: Explored nodes (We only store the state)
+         Open = MagicalCollection()  # Open: Known, but still unexplored Nodes
+         Open.add(starting_node)
+
+         while Open:
+             node = Open.pop()  # Takes a node from Open. Which one?
+             if is_goal(node):
+                 return path(node)
+
+             Closed.add(node)
+             for n in node.neighbors():  # Creates Nodes around node.state
+                 if n.state in Closed:
+                     continue
+                  Open.upsert(n)  # Insert|Update to keep Nodes a Spanning Tree
+
+         return None
+    #+end_src
+
+
+* Search Algorithms
+** Depth-first Search
+*** A simple implementation
+    #+begin_src python
+      def _dfs(g: Graph, state: State, q: Query, p: Path) -> Path:
+          """Naive-DFS. Might get stuck in a loop."""
+          if q.isGoal(state):
+              return p
+
+          for s in g.neighbors(state):
+              path = _dfs(g, s, q, p+s)
+              if path:
+                  return path
+
+          return None
+
+      def dfs(g: Graph, s: State, q: Query):
+          return _dfs(g, s, q, Path())
+    #+end_src
+
+*** DFS v2 - Loop-safe
+    #+begin_src python
+      def _loop_free_dfs(g: Graph, state: State, q: Query, p: Path, visited: Set[State]) -> Path:
+          """Simple-DFS. Checks for loops, but it might run into a Stack Overflow."""
+          if q.isGoal(state):
+              return g.path_to(state)  # Retrieve the path to state
+
+          if state in visited
+              return None
+          visited.add(state)
+
+          for a, s in g.neighbors(state):
+              path = _loop_free_dfs(g, s, q, p+a)
+              if path:
+                  return path
+
+          return None
+
+      def loop_free_dfs(g: Graph, s: State, q: Query) -> Path:
+          return _loop_free_dfs(g, s, q, Path(), set())
+    #+end_src
+
+*** DFS v3 - Bounded stack
+    #+begin_src python
+      def loop_free_recursion_free_dfs(g: Graph, start: State, q: Query, p: Path) -> Path:
+          """DFS with loop detection and no recursion. Now a Generic Search using a Stack."""
+          Closed = set()
+          Open = Stack()
+          Open.push(start)
+          g.reach(start, action=None, parent=None)
+
+          while not Open.empty():
+              state = Open.pop()
+
+              if q.isGoal(state):
+                  return g.path_to(state)  # Retrieve the path to state
+
+              for a, s in s.neighbors():
+                  if s in Closed:
+                      continue
+                  g.reach(s, action=a, parent=state)  # Update the path to s (if needed)
+                  Open.push(s)
+
+          return None
+    #+end_src
+
+** Breadth-first Search
+*** A simple implementation
+    #+begin_src python
+      def breadth_first_search(g: Graph, start: State, query: Query) -> Path:
+          """BFS. A Generic Search using a Queue."""
+          Closed = set()
+          Open = Queue()
+          Open.push(start)
+          g.reach(start, action=None, parent=None)
+
+          while not Open.empty():
+              state = Open.pop()
+
+              if q.isGoal(state):
+                  return g.path_to(state)  # Retrieve the path to state
+      
+              for s in state.neighbors():
+                  if s in Closed or s in Open:
+                      continue
+                  g.reach(s, action=a, parent=state)  # Record the path to s (if needed)
+                  Open.push(s)
+
+          return None
+    #+end_src
+
+** Dijkstra's Algorithm
+*** A simple implementation
+    #+begin_src python
+      def best_first_search(g: Graph, start: State, query: Query) -> Path:
+          """Dijkstra's algorithm. Similar to BFS, but prefering lower costs.
+          It's just the  Generic Search using a cost-aware PriorityQueue."""
+          Closed = set()
+          Open = PriorityQueue()
+          Open.push(Node(start))
+
+          while not Open.empty():
+              node = Open.pop()
+
+              if q.isGoal(node.state):
+                  return node.get_path()
+
+              for a, s in state.neighbors():
+                  if s in Closed:
+                      continue
+                  n = Node(s, action=a, parent=state)
+                  Open.upsert(n)  # Insert|Update to keep Nodes a Spanning Tree
+
+          return None
+    #+end_src

@@ -1,0 +1,402 @@
+#+title: Introduction
+#+author:
+#+email: ddaroch@ing.puc.cl
+#+language: en
+#+date: AI - 2021 H2
+#+REVEAL_ROOT: reveal.js/
+
+* Tasks                                                            :noexport:
+** TODO Write Introduction
+   SCHEDULED: <2021-08-01 Sun>
+** TODO Practice Introduction
+   SCHEDULED: <2021-08-14 Sun>
+** TODO Teach Introduction
+   SCHEDULED: <2021-08-16 Mon>
+
+
+* Setup                                                            :noexport:
+  #+SEQ_TODO: TODO REVIEW | DONE
+
+  # ##Local Variables:
+  # ##eval: (add-hook 'after-save-hook (org-reveal-export-to-html))
+  # ##eval: (add-hook 'after-save-hook (org-pandoc-export-to-beamer-pdf))
+  # ##End:
+
+* Config                                                          :noexport:
+  #+STARTUP: overview
+
+** Numbering
+   #+OPTIONS: toc:nil
+   # Remove numbering from sections and subsections
+   #+OPTIONS: num:nil
+
+** Reveal
+   #+REVEAL_HLEVEL: 2
+   #+REVEAL_SPEED: 2
+   #+OPTIONS: reveal_slide_number:h.v
+
+   #+REVEAL_EXTRA_CSS: ./style.css
+
+   # Adding plugins without their dependencies might break your slides
+   #+REVEAL_EXTRA_JS: { src: 'plugin/math/math.js', async: true }, { src: 'plugin/zoom-js/zoom.js', async: true }
+   #+REVEAL_PLUGINS: (highlight markdown notes)
+
+*** Looks
+    #+REVEAL_TRANS: slide
+    # Theme (black moon night blood)
+    #+REVEAL_THEME: black
+    # Target 1366x768, 16:9 and not far from 1024x768 widely used on projectors
+    #+OPTIONS: reveal_width:1366 reveal_height:768
+    # #+REVEAL_EXTRA_CSS: custom.css
+*** Reveal
+    #+OPTIONS: reveal_center:t
+    #+OPTIONS: reveal_progress:t
+    #+OPTIONS: reveal_history:nil
+    #+OPTIONS: reveal_control:t
+    #+OPTIONS: reveal_rolling_links:t
+    #+OPTIONS: reveal_keyboard:t
+    #+OPTIONS: reveal_overview:t
+
+** Beamer
+   #+BEAMER_THEME: Rochester [height=20pt]
+   # #+OPTIONS: H:2
+   # #+OPTIONS:   H:3 num:t toc:t \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+
+* Introduction
+  SCHEDULED: <2021-08-16 Mon>
+  :PROPERTIES:
+  :reveal_background: Images/AI.jpg
+  :reveal_background_trans: slide
+  :END:
+
+** Motivation
+*** A bit of history
+    :PROPERTIES:
+    :reveal_background: Images/HorsePlowing_Darkened.jpg
+    :reveal_background_trans: slide
+    :END:
+    Over time, humans have proven to be lazy and smart
+
+    #+ATTR_REVEAL: :frag (appear)
+    - We've built tools to help with do our work
+      - Spears, Knifes, Hammers
+      - And built new tools with those tools
+    - We've used animals to do our work
+      - Plow horses
+    - We've built machines to do our work
+      - Tractors
+    - We've built computers to aid our brains
+    #+LaTeX: \note{
+    #+BEGIN_NOTES
+    1. Early humans needed to hunt, and built tools for that.
+    2. Then they learnt about agriculture and built tools and trained animals
+       for that.
+       - https://en.wikipedia.org/wiki/Agriculture
+    3. Then they built machines to do more work in a more efficient way
+    4. Eventually they built computers to help us think
+       - Computing began with calculators to help scientists.
+
+    But this is not enough. We want assistance for every task we face.
+    #+END_NOTES
+    #+LaTeX: }
+
+*** We want even better machines!
+    #+ATTR_REVEAL: :frag (appear)
+    Machines so far have solved a vast amount of physical problems.
+    #+ATTR_REVEAL: :frag (appear)
+    - Transportation
+    - Heating / Cooling
+    - Energy distribution
+    - And the list goes on...
+
+    #+ATTR_REVEAL: :frag (appear)
+    Yet that seems insufficient, humans are still working.
+    #+ATTR_REVEAL: :frag (appear)
+    - Our machines are too dumb, so far they can only support our work.
+
+*** A whole new class of machines
+    #+ATTR_REVEAL: :frag (appear)
+    - Can machines be intelligent?
+    - At which point should we call them intelligent?
+    - What's Intelligence on the first place?
+      # [[https://www.youtube.com/watch?v=kaahx4hMxmw][If you can't tell, Does it matter?]]
+    - How to build intelligent systems?
+     # [[https://www.reddit.com/r/ProgrammerHumor/comments/5ylndv/so_thats_how_they_did_it_its_brilliant/][C&A]]
+
+    #+LaTeX: \note{
+    #+BEGIN_NOTES
+    This is an Artificial Intelligence course, naturally one of our first
+    questions would be whether that can be achieved.
+
+    * Can computers be intelligent? Even so if they do exactly as we "say" so?
+      - Programs crash even though it's "obvious" that dereferencing a null
+        pointer is UB (unless we do barebone black magic).
+      - Sorting algorithms will try to sort arrays that are known to be sorted.
+      - We can run Bubble-sort on a large list even though there's more efficient
+        algorithms.
+    * At which point should we call a computer intelligent?
+      - When thinking or acting rationally?
+        - Understanding the models of the world and acting as if they realized
+          other options were worse.
+      - When thinking or acting humanly?
+        - Using context, knowledge and understanding of other beings.
+      - We know they can play chess and recognize cats, but that doesn't seem
+        enough.
+    * What's intelligence in the first place?
+      - Uhmm, aren't there multiple types of intelligence?
+        - Logical-mathematical, linguistic, spatial, musical, intra-personal,
+          inter-personal, bodily-kinesthetic.
+    * How to build intelligent systems?
+      - Hold up, what's intelligence again?
+    #+END_NOTES
+    #+LaTeX: }
+
+*** A practical approach
+    #+ATTR_REVEAL: :frag (appear)
+    #+begin_quote
+    I propose to consider the question, ‘Can machines think?’
+
+    -- Alan Turing, 1950.
+    #+end_quote
+
+    #+LaTeX: \note{
+    #+BEGIN_NOTES
+    This question tries to steer away from the complexity of defining
+    intelligence and focuses on a key skill for Intelligent actors.
+    #+END_NOTES
+    #+LaTeX: }
+
+*** The Imitation Game
+    # https://en.wikipedia.org/wiki/Turing_test
+    # https://upload.wikimedia.org/wikipedia/commons/5/55/Turing_test_diagram.png
+    [[./Images/Turing_test_diagram.png]]
+
+    #+LaTeX: \note{
+    #+BEGIN_NOTES
+    Along with this question, Turing also proposed the Imitation Game, in which
+    an interrogator will perform a blind test to tell apart a human and a
+    computer in two separate rooms by communicating only through a paper.
+
+    If a Machine could trick the human interrogator into believing it's a human,
+    then we would be consider it intelligent enough.
+
+    Experiments with the Turing Test.
+    - A machine that wrote perfectly, or too fast gives itself away.
+    #+END_NOTES
+    #+LaTeX: }
+
+*** An example conversation
+    # https://academic.oup.com/mind/article/LIX/236/433/986238
+    #+ATTR_REVEAL: :frag (appear)
+    - *Q*: Please write me a sonnet on the subject of the Forth Bridge.
+    - *A*: Count me out on this one. I never could write poetry.
+    - *Q*: Add 34957 to 70764
+    - *A*: (Pause about 30 seconds and then give as answer) 105621. ([[https://www.wolframalpha.com/input/?i=Add+34957+to+70764][Sum]])
+    - *Q*: Do you play chess?
+    - *A*: Yes.
+    - *Q*: I have K at my K1 (e1|e8), and no other pieces. You have only K at
+      K6 (e3|e6) and R at R1 (a/h 1/8). It is your move. What do you play?
+    - ([[http://www.ee.unb.ca/cgi-bin/tervo/fen.pl?select=r7%2F8%2F8%2F8%2F8%2F4k3%2F8%2F4K3+w+KQkq+-+0+1][BoardA]], [[http://www.ee.unb.ca/cgi-bin/tervo/fen.pl?select=7r%2F8%2F8%2F8%2F8%2F4k3%2F8%2F4K3+w+KQkq+-+0+1][BoardB]], ...)
+    - *A*: (After a pause of 15 seconds) R-R8 (a1/h1) mate.
+
+    #+LaTeX: \note{
+    #+BEGIN_NOTES
+    Criticism,
+    - A machine that writes perfectly, or too fast would give itself away.
+      - Machines making typos can trick people more easily.
+    - Knowing too little, or too much about the world would be suspicious.
+      - Wouldn't we want to achieve super-human intelligence instead? Why stop
+        at the average?
+
+    Note that the chess position is ambiguous, yet the solution works is correct
+    in all 8 interpretations (swap colors, swap sides).
+    https://en.wikipedia.org/wiki/Descriptive_notation
+    #+END_NOTES
+    #+LaTeX: }
+
+*** Dissecting Intelligence
+    #+ATTR_REVEAL: :frag (appear)
+    The Turing test appears to be insufficient.
+    #+ATTR_REVEAL: :frag (appear)
+    - Different modes of thinking
+    - Context awareness
+
+*** Modes of thinking
+    #+ATTR_REVEAL: :frag (appear)
+    - "Fast" thinking. System 1
+      - Automated, immediate thinking/reasoning
+    - "Slow" thinking. System 2
+      - Manual, active thinking/reasoning
+
+    #+LaTeX: \note{
+    #+BEGIN_NOTES
+    System 1 seems to barely need consciousness and happens without our control
+    without much apparent thinking.
+
+    System 2 requires an active effort.
+
+    By the 2011 Nobel Prize in Economics, Daniel Kahneman.
+    https://en.wikipedia.org/wiki/Thinking,_Fast_and_Slow
+    #+END_NOTES
+    #+LaTeX: }
+
+*** Context Awareness
+    #+ATTR_REVEAL: :frag (appear)
+    - Language Ambiguities
+      - Winograd schema challenge
+        - An ambiguity resolution problem.
+          - The computer does not fit in the bag because it's too big.
+            - What's too big?
+          - The computer does not fit in the bag because it's too small.
+            - What's too small?
+    - Perception ambiguities are also resolved by context
+      - [[https://www.youtube.com/watch?v=kB0I5x_Skzg][Phantom Words]]
+
+    #+LaTeX: \note{
+    #+BEGIN_NOTES
+    Context, including knowledge, is key to understanding.
+
+    Context happens to also be key for perception.
+
+    https://en.wikipedia.org/wiki/Winograd_schema_challenge
+    By Hector Levesque: https://en.wikipedia.org/wiki/Hector_Levesque
+
+    Diana Deutsch also has many interesting hearing illusions.
+    #+END_NOTES
+    #+LaTeX: }
+
+** AI in practice
+*** Intelligent systems
+    #+ATTR_REVEAL: :frag (appear)
+    The goal is to be able to build intelligent systems.
+
+    Building those requires solving tasks that demonstrate intelligent behaviour
+    and on top of that, systems that humans can interact with.
+
+    We will be focusing on core tasks needed to build such systems
+
+*** Tasks to be solved
+    #+ATTR_REVEAL: :frag (appear)
+    - Dealing with human input
+      - Computer Vision
+      - Computer Audition
+    - Understanding
+      - Natural Language Processing
+      - Knowledge Representation & Automated Reasoning
+      - Machine Learning
+    - Acting
+      - Robotics
+      - (Producing output for humans)
+
+    #+LaTeX: \note{
+    #+BEGIN_NOTES
+    These tasks are vast research fields on their own, and building a system
+    that intelligently combines them still seems beyond what can be done today.
+
+      - Playing games like Tic-tac-toe, Chess
+      - Reasoning about constraints, like solving Einstein's problem
+      - Understanding natural language to make usable systems
+      - Understanding and producing media. Images, Video, Audio.
+    #+END_NOTES
+    #+LaTeX: }
+
+*** Problems to be solved
+    #+ATTR_REVEAL: :frag (appear)
+    - How to use AI?
+      - Goals
+      - Ethics
+
+    #+LaTeX: \note{
+    #+BEGIN_NOTES
+    Beyond tasks there's questions that seem bigger than Computer Science.
+    #+END_NOTES
+    #+LaTeX: }
+
+** Course Overview
+*** Part 1: Deductive AI
+    #+ATTR_REVEAL: :frag (appear)
+    - Search and Planning
+      - Solving problems through Path-finding.
+        - [[https://www.youtube.com/watch?v=GC-nBgi9r0U][A comparison of Pathfinding algorithms]]
+      - Games
+        - [[https://www.youtube.com/watch?v=l-hh51ncgDI][αβ prunning]]
+    - Logic
+      - Constraint-satisfaction solvers
+    #+LaTeX: \note{
+    #+BEGIN_NOTES
+    #+END_NOTES
+    #+LaTeX: }
+
+*** Part 2: Inductive AI
+    #+ATTR_REVEAL: :frag (appear)
+    - Evaluating performance
+    - ML Tasks
+    - Learning algorithms and techniques
+      - Support-vector machines
+      - Decision Trees
+      - Naïve Bayes
+      - Markov Decision Processes
+      - Neural Networks
+        - [[https://www.youtube.com/watch?v=aircAruvnKk][What is a neural network? - 3b1b]]
+
+    #+LaTeX: \note{
+    #+BEGIN_NOTES
+    Disclaimer, Álvaro is the actual teacher here.
+
+    Evaluation:
+      Generalization
+    ML Tasks
+    - Prediction     (Guess value, e.g., Cancer detection, Weather)
+    - Classification (Guess category, e.g., Digits, [[https://www.youtube.com/embed/ACmydtFDTGs][Hot-dot v/s not Hot-dog]])
+    - Clustering     (Guess categories and categorize, e.g., Digits without
+      knowing the digits)
+    #+END_NOTES
+    #+LaTeX: }
+
+** Course Information                                              :noexport:
+*** Evaluation
+    #+ATTR_REVEAL: :frag (appear)
+    - Final Grade: ${F} =  0.7*A + 0.3*Q$
+      #+ATTR_REVEAL: :frag (appear)
+      - Assignments: ${A} = {\sum_{i=1}^4{a_i} \over 4}$
+      - Quizzes: ${Q} \approx {\sum_{i=1}^N{q_i} \over N}$
+*** Bibliography
+    - Books
+      - [[http://aima.cs.berkeley.edu/][Artificial Intelligence: A Modern Approach - Russell, Norvig. 2010]]
+      - [[https://www.deeplearningbook.org/][Deep Learning - Goodfellow, Bengio, Courville. 2016]]
+      - [[https://www.springer.com/gp/book/9780387310732][Pattern Recognition and Machine Learning - Bishop. 2006]]
+      - [[https://www.cs.cmu.edu/~tom/mlbook.html][Machine Learning - Mitchell. 1997]]
+    - non-Books
+      - [[https://potassco.org/doc/][Postdam Answer Set Solving Collection's Documentation]]
+*** Contact
+    - Emails
+      - Dietrich: [[mailto:ddaroch+ai-2021-2@ing.puc.cl][ddaroch@ing.puc.cl]]
+      - Álvaro: [[mailto:asoto+ai-2021-2@ing.puc.cl][asoto@ing.puc.cl]]
+*** Random links                                                   :noexport:
+    - [[http://everynoise.com/][everynoise.com]]
+    - [[news.ycombinator.com/][Hacker News]]
+    - [[https://www.youtube.com/watch?v=AyhPmypHDEw][Build a Second Brain with org-roam]]
+    - [[https://missing.csail.mit.edu/][The missing Semester of Your CS Education]]
+    - [[https://overthewire.org/wargames/bandit/][Bandit - Introductory (Computer Security) Wargame]]
+    - [[https://fishshell.com/][Fish shell, a command-line shell for the 90s]]
+    - [[https://git-school.github.io/visualizing-git][Visualizing ~git~]]
+    - [[https://www.musictheory.net/lessons][Music Theory]]
+    - [[https://raytracing.github.io/books/RayTracingInOneWeekend.html][Ray-Tracing in "one" weekend]]
+    - [[https://www.youtube.com/watch?v=UCKC-QVcVn0][The Engineering of the Drinking Bird]]
+    - [[https://store.steampowered.com/app/730/CounterStrike_Global_Offensive/][CS:GO]]
+    - To Mock a Mockingbird
+    - Demon-Haunted World
+      - [[https://www.youtube.com/watch?v=3JpQFVXGzUI][Carl Sagan on Charlie Rose: Demon-Haunted World]]
+    - [[https://www.youtube.com/watch?v=lG4VkPoG3ko][Why Bayes rule is nicer with odds - 3b1b]]
+    - [[https://www.youtube.com/watch?v=aircAruvnKk][What is a neural network? - 3b1b]]
+
+* Bibliography
+*** Images
+**** The Imitation Game
+     https://en.wikipedia.org/wiki/Turing_test
+     https://upload.wikimedia.org/wikipedia/commons/5/55/Turing_test_diagram.png
+*** Quotes
+**** A practical approach
+     https://academic.oup.com/mind/article/LIX/236/433/986238
+**** An example conversation
+     https://academic.oup.com/mind/article/LIX/236/433/986238
