@@ -1,7 +1,7 @@
 # IIC2613 - Inteligencia Artificial
 
 ## Clonar el repositorio
-Para poder visualizar las *Slides* correctamente deben clonar el repositorio recursivamente. Esto pueden hacerlo a través del siguiente comando:
+Para poder visualizar las *slides* correctamente deben clonar el repositorio recursivamente. Esto pueden hacerlo a través del siguiente comando:
 ```console
 git clone --recurse-submodules https://github.com/IIC2613-Inteligencia-Artificial-2021-2/Syllabus.git
 ```
@@ -16,7 +16,7 @@ A continuación, se muestra una tabla resumen del equipo docente de IIC2613 2021
 | Profesor              | Álvaro Soto         |                |
 | Coordinador           | Fernando Balladares | FeBalla        |
 | Ayudante              | Esteban Brzovic     | ebrzovic       |
-| Ayudante              | Felipe Guzman       | vWing7         |
+| Ayudante              | Felipe Guzmán       | vWing7         |
 | Ayudante              | Diego Caroca        | Pudindin       |
 | Ayudante              | Sergio Matamala     | Huasito-Appel  |
 | Ayudante              | Pablo Flores        | ptflores1      |
