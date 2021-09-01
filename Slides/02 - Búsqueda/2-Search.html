@@ -18,19 +18,19 @@
 <div class="reveal">
 <div class="slides">
 <section id="sec-title-slide">
-<h1 class="title">Search</h1><h2 class="date">AI - 2021 H2</h2><p class="date">Created: 2021-08-25 Wed 10:33</p>
+<h1 class="title">Search</h1><h2 class="date">AI - 2021 H2</h2><p class="date">Created: 2021-09-01 Wed 08:41</p>
 </section>
 
 <section>
-<section id="slide-org80b2dab">
-<h2 id="org80b2dab">Search Problem</h2>
-<div class="outline-text-2" id="text-org80b2dab">
+<section id="slide-orgb6797a3">
+<h2 id="orgb6797a3">Search Problem</h2>
+<div class="outline-text-2" id="text-orgb6797a3">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org397f520">
-<h3 id="org397f520">Path-finding</h3>
+<section id="slide-org73308ae">
+<h3 id="org73308ae">Path-finding</h3>
 <p>
 Many interesting problems can be framed as Search problem in a Graph.
 </p>
@@ -50,15 +50,15 @@ Many interesting problems can be framed as Search problem in a Graph.
 </section>
 </section>
 <section>
-<section id="slide-orgabcd993">
-<h3 id="orgabcd993">Sokoban</h3>
+<section id="slide-org9886fd3">
+<h3 id="org9886fd3">Sokoban</h3>
 </section>
 <section data-background-iframe="https://www.youtube.com/embed/n9YzAK-nuB4?start=25" data-background-interactive>
 </section>
 </section>
 <section>
-<section id="slide-orgbba2cc3">
-<h3 id="orgbba2cc3">Taxonomy</h3>
+<section id="slide-orgf18bfea">
+<h3 id="orgf18bfea">Taxonomy</h3>
 <ul>
 <li class="fragment appear">Mode
 <ul>
@@ -89,8 +89,8 @@ Many interesting problems can be framed as Search problem in a Graph.
 </section>
 </section>
 <section>
-<section id="slide-orgf003f47">
-<h3 id="orgf003f47">Examples</h3>
+<section id="slide-org1200008">
+<h3 id="org1200008">Examples</h3>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -236,8 +236,8 @@ Enter speaker notes here.
 </section>
 </section>
 <section>
-<section id="slide-org4ac003e">
-<h3 id="org4ac003e">Problem Terminology</h3>
+<section id="slide-org139ba57">
+<h3 id="org139ba57">Problem Terminology</h3>
 <p>
 We will need some common terms to talk about path-finding.
 </p>
@@ -276,8 +276,8 @@ Chess has some subtleties, like castling and draw by repetition.
 </section>
 </section>
 <section>
-<section id="slide-orga5af556">
-<h3 id="orga5af556">Search terminology</h3>
+<section id="slide-orgf7053ef">
+<h3 id="orgf7053ef">Search terminology</h3>
 <ul>
 <li class="fragment appear">Search problem: \((Space, start, goal)\)
 <ul>
@@ -295,8 +295,8 @@ resulting states.</li>
 </section>
 </section>
 <section>
-<section id="slide-org687aed6">
-<h3 id="org687aed6">A generic search algorithm</h3>
+<section id="slide-org0bbd6f6">
+<h3 id="org0bbd6f6">A generic search algorithm</h3>
 <div class="org-src-container">
 
 <pre class="fragment (appear)"><code class="python" >def generic_search_sketch(g: Graph, starting_node, goal_function) -&gt; Solution:
@@ -313,7 +313,7 @@ resulting states.</li>
         for n in node.neighbors():  # Creates Nodes around node.state
             if n.state in Closed:
                 continue
-             Open.upsert(n)  # Insert|Update to keep Nodes a Spanning Tree
+             Open.upsert(n)  # Insert|Update to keep Nodes a Spanning Tree (if needed)
 
     return None
 </code></pre>
@@ -323,20 +323,20 @@ resulting states.</li>
 </section>
 </section>
 <section>
-<section id="slide-org522450e">
-<h2 id="org522450e">Search Algorithms</h2>
-<div class="outline-text-2" id="text-org522450e">
+<section id="slide-org8acaf6e">
+<h2 id="org8acaf6e">Search Algorithms</h2>
+<div class="outline-text-2" id="text-org8acaf6e">
 </div>
 </section>
 </section>
 <section>
-<section id="slide-org312412b">
-<h3 id="org312412b">Depth-first Search</h3>
-<div class="outline-text-3" id="text-org312412b">
+<section id="slide-org94bf6bd">
+<h3 id="org94bf6bd">Depth-first Search</h3>
+<div class="outline-text-3" id="text-org94bf6bd">
 </div>
 </section>
-<section id="slide-orge5de551">
-<h4 id="orge5de551">A simple implementation</h4>
+<section id="slide-org7ff1ab6">
+<h4 id="org7ff1ab6">A simple implementation</h4>
 <div class="org-src-container">
 
 <pre><code class="python" >def _dfs(g: Graph, state: State, q: Query, p: Path) -&gt; Path:
@@ -357,8 +357,8 @@ def dfs(g: Graph, s: State, q: Query):
 </div>
 
 </section>
-<section id="slide-org8f3e290">
-<h4 id="org8f3e290">DFS v2 - Loop-safe</h4>
+<section id="slide-org0cefeab">
+<h4 id="org0cefeab">DFS v2 - Loop-safe</h4>
 <div class="org-src-container">
 
 <pre><code class="python" >def _loop_free_dfs(g: Graph, state: State, q: Query, p: Path, visited: Set[State]) -&gt; Path:
@@ -383,8 +383,8 @@ def loop_free_dfs(g: Graph, s: State, q: Query) -&gt; Path:
 </div>
 
 </section>
-<section id="slide-org304aced">
-<h4 id="org304aced">DFS v3 - Bounded stack</h4>
+<section id="slide-org543d704">
+<h4 id="org543d704">DFS v3 - Bounded stack</h4>
 <div class="org-src-container">
 
 <pre><code class="python" >def loop_free_recursion_free_dfs(g: Graph, start: State, q: Query, p: Path) -&gt; Path:
@@ -413,13 +413,13 @@ def loop_free_dfs(g: Graph, s: State, q: Query) -&gt; Path:
 </section>
 </section>
 <section>
-<section id="slide-org5f57437">
-<h3 id="org5f57437">Breadth-first Search</h3>
-<div class="outline-text-3" id="text-org5f57437">
+<section id="slide-org327c57f">
+<h3 id="org327c57f">Breadth-first Search</h3>
+<div class="outline-text-3" id="text-org327c57f">
 </div>
 </section>
-<section id="slide-org57fb5be">
-<h4 id="org57fb5be">A simple implementation</h4>
+<section id="slide-org5276040">
+<h4 id="org5276040">A simple implementation</h4>
 <div class="org-src-container">
 
 <pre><code class="python" >def breadth_first_search(g: Graph, start: State, query: Query) -&gt; Path:
@@ -448,20 +448,97 @@ def loop_free_dfs(g: Graph, s: State, q: Query) -&gt; Path:
 </section>
 </section>
 <section>
-<section id="slide-org875d40e">
-<h3 id="org875d40e">Dijkstra's Algorithm</h3>
-<div class="outline-text-3" id="text-org875d40e">
+<section id="slide-org9f800fa">
+<h3 id="org9f800fa">Dijkstra's Algorithm</h3>
+<div class="outline-text-3" id="text-org9f800fa">
 </div>
 </section>
-<section id="slide-org3ae85a9">
-<h4 id="org3ae85a9">A simple implementation</h4>
+<section id="slide-org188bb78">
+<h4 id="org188bb78">Graphs with costs</h4>
+<ul>
+<li class="fragment appear">Many problems have actions that have different costs.
+<ul>
+<li>Time or effort actions take varies naturally
+<ul>
+<li>Some roads are longer, climbing stairs takes more time and energy.</li>
+
+</ul></li>
+
+</ul></li>
+<li class="fragment appear">BFS won't be optimal in cost by being optimal in the number of actions.</li>
+
+</ul>
+
+</section>
+<section id="slide-orge4ba1c8">
+<h4 id="orge4ba1c8">Solving problems with cost</h4>
+<p class="fragment (appear)">
+The natural starting point is BFS as it's optimal in the number of actions.
+</p>
+<ul>
+<li class="fragment appear">How do we translate BFS's hop-consiousness into cost-consiousness?
+<ul>
+<li class="fragment appear">Instead of the closest node you can reach, take the cheapest one.</li>
+<li class="fragment appear">Wait, is that enough? What's so smart about this? How is Dijkstra
+famous for it?
+<ul>
+<li class="fragment appear">Yes; nothing; Invented it while drinking coffee, and also invented
+many more algorithms.</li>
+
+</ul></li>
+
+</ul></li>
+
+</ul>
+
+</section>
+<section id="slide-org5a0b91e">
+<h4 id="org5a0b91e">Updating Open</h4>
+<p>
+Costs will force us to continuously rank and update  nodes in \(Open\).
+</p>
+
+<div id="org36b748b" class="figure">
+<p><img src="../src/Graphs/search_update_open.png" alt="search_update_open.png" />
+</p>
+</div>
+
+<p>
+We will need something more efficient than a list or a stack.
+</p>
+<ul>
+<li>A Priority Queue (aka Heap) does exactly what we need. (<a href="https://docs.python.org/3/library/heapq.html#theory">Python's heapq</a>)</li>
+
+</ul>
+
+</section>
+<section id="slide-org4eacaaf">
+<h4 id="org4eacaaf">Updating Open</h4>
+<p>
+What should we do here?
+</p>
+
+<div id="orgf700031" class="figure">
+<p><img src="../src/Graphs/search_update_open2.png" alt="search_update_open2.png" />
+</p>
+</div>
+
+<ul>
+<li class="fragment appear">Expansions: \((0, s), (0, b), (1, a), (4, g)\).</li>
+<li class="fragment appear">Insertions/Updates: \([(0, s)], [(1, a), (0, b), (5, g)], [(7, c)], [(5\rightarrow 4, g)]\).</li>
+<li class="fragment appear">Final Closed: \({s, b, a}\). Final Open: \((7, c)\). Unknown States: \(d\)</li>
+
+</ul>
+
+</section>
+<section id="slide-org52031e4">
+<h4 id="org52031e4">A simple implementation</h4>
 <div class="org-src-container">
 
 <pre><code class="python" >def best_first_search(g: Graph, start: State, query: Query) -&gt; Path:
-    """Dijkstra's algorithm. Similar to BFS, but prefering lower costs.
-    It's just the  Generic Search using a cost-aware PriorityQueue."""
+    """Dijkstra's algorithm. Similar to BFS, but prefering lower costs."""
     Closed = set()
-    Open = PriorityQueue()
+    Open = CustomPriorityQueue()  # A Heap with fast updates for existing items
     Open.push(Node(start))
 
     while not Open.empty():
@@ -474,11 +551,246 @@ def loop_free_dfs(g: Graph, s: State, q: Query) -&gt; Path:
             if s in Closed:
                 continue
             n = Node(s, action=a, parent=state)
-            Open.upsert(n)  # Insert|Update to keep Nodes a Spanning Tree
+            Open.update_if_better(n)  # Open may already have a Node for s
 
     return None
 </code></pre>
 </div>
+
+</section>
+</section>
+<section>
+<section id="slide-org2875580">
+<h3 id="org2875580">Smarter decisions</h3>
+<div class="outline-text-3" id="text-org2875580">
+</div>
+</section>
+<section id="slide-org3591629">
+<h4 id="org3591629">Lack of comprehension</h4>
+<ul>
+<li class="fragment appear">Even while Dijkstra's Algorithm is aware of the costs, it still takes
+decisions that humans looking at a (simple) graph wouldn't.
+<ul>
+<li>We make good guesses on where to head to, even if we don't exactly know
+the solution for the problem.</li>
+
+</ul></li>
+<li class="fragment appear">What do we really think about when solving search problems?
+<ul>
+<li>We sense that some States are better than others as they seem to be
+closer to the goals.</li>
+<li>We estimate the remaining cost.</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+<section id="slide-orgdbdf9f8">
+<h4 id="orgdbdf9f8">What if we could estimate?</h4>
+<ul>
+<li class="fragment appear">Say we had a function \(estimate: State \rightarrow \mathbb{R}_0^+\)</li>
+<li class="fragment appear">We could tie-break based on the estimated cost.
+<ul>
+<li>For equally expensive nodes from Open, we would prefer the one that
+seems closer</li>
+
+</ul></li>
+<li class="fragment appear">Can we do better?</li>
+
+</ul>
+
+</section>
+<section id="slide-org73baf6f">
+<h4 id="org73baf6f">Rethinking costs</h4>
+<p class="fragment (appear)">
+With a known cost to a Node, and an estimated remaining cost to reach a goal,
+we can guess what's the cost of a solution that goes the Node.
+</p>
+<ul>
+<li class="fragment appear">Instead of only ranking with \(cost: Node \rightarrow \mathbb{R}_0^+\) we
+can also consider the estimated remaining cost.
+<ul>
+<li class="fragment appear">\(solution\_cost: Node \rightarrow \mathbb{R}_0^+\)</li>
+<li class="fragment appear">\(solution\_cost(n) = cost(n) + estimate(n.state)\)</li>
+<li class="fragment appear">Actually known as \(f(n) = g(n) + h(n.state)\)</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+<section id="slide-org42caf59">
+<h4 id="org42caf59">Heuristics</h4>
+<ul>
+<li class="fragment appear">How do we estimate costs of a path we don't know yet?</li>
+<li class="fragment appear">What if we estimate costs poorly?
+<ul>
+<li>What's a poor estimation?
+<ul>
+<li>\(h(s) = 0\) is a function from \(State \rightarrow \mathbb{R}_0^+\).
+<ul>
+<li>With this we are back to using Dijkstra's algorithm?</li>
+
+</ul></li>
+<li>What if we under-estimate the cost?</li>
+<li>What if we over-estimate the cost?</li>
+<li>Can we improve our estimations as we go?</li>
+
+</ul></li>
+
+</ul></li>
+
+</ul>
+
+</section>
+<section id="slide-org8d60d31">
+<h4 id="org8d60d31">A*</h4>
+<p class="fragment (appear)">
+\(A^*\) is the search algorithm that ranks nodes with \(f(n)=g(n)+h(n.state)\).
+</p>
+<ul>
+<li>Is it better? Is it the best?
+<ul>
+<li>Well, it depends on how good the heuristic is.</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+<section id="slide-org5463a57">
+<h4 id="org5463a57">What's a good heuristic?</h4>
+<ul>
+<li class="fragment appear">\(h(s)=0\) is definitely not good.
+<ul>
+<li class="fragment appear">Not the worst, at least you fallback to Dijkstra's Algorithm, which works and gets optimal solutions.</li>
+<li class="fragment appear">Really? What's worse than \(h(s)=0\)?
+<ul>
+<li class="fragment appear">A misguiding heuristic. What if \(h(g)=\infty\) for every goal state?
+<ul>
+<li class="fragment appear"><a href="https://youtu.be/vde6rOO5AbU?t=32">That's evil</a>! With that we would miss the goal!</li>
+<li class="fragment appear">True. With bad heuristics \(A^*\) may not be complete nor correct.</li>
+
+</ul></li>
+
+</ul></li>
+
+</ul></li>
+
+</ul>
+<ul>
+<li class="fragment appear">If \(h(s)\) was the actual cost to the solution it would be really good.
+<ul>
+<li class="fragment appear">Indeed, but computing that is solving the search problem at hand.</li>
+<li class="fragment appear">This perfect heuristic, called \(h^*(s)\), is a good reference heuristic.</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+<section id="slide-orgc44af94">
+<h4 id="orgc44af94">So, what's a good heuristic?</h4>
+<ul>
+<li class="fragment appear">A good heuristic must not drive us away from a goal.
+<ul>
+<li class="fragment appear">\(0 \leq h(s) \leq h^*(s)\)
+<ul>
+<li class="fragment appear">\(f(n)\) would always be a lower bound for the cost.</li>
+<li class="fragment appear">Otherwise we may defer expanding nodes in the optimal path for too
+long and find a sub-optimal path first.</li>
+<li class="fragment appear">Known as admissibility.</li>
+
+</ul></li>
+<li class="fragment appear">Is this enough? No</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+<section id="slide-org4876fbc">
+<h4 id="org4876fbc">A stronger heuristic property</h4>
+
+<div id="org2a19273" class="figure">
+<p><img src="../src/Graphs/search_inconsistent_h.png" alt="search_inconsistent_h.png" />
+</p>
+</div>
+
+<ul>
+<li class="fragment appear">This is admissible and almost \(h^*(s)\), the only difference is on \(B\).
+<ul>
+<li class="fragment appear">\(A^*\) gets misdirected. What's so wrong with \(h(B)=0\)?</li>
+<li class="fragment appear">It tells us that \(B\) is really good and \(B\) gets in \(Closed\) too early.</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+<section id="slide-org4d4d832">
+<h4 id="org4d4d832">Consistency</h4>
+
+<div id="org022cc2f" class="figure">
+<p><img src="../src/Graphs/search_inconsistent_h.png" alt="search_inconsistent_h.png" />
+</p>
+</div>
+<ul>
+<li class="fragment appear">The trick here is likely be on \(h(B)=0\). \(h=h^*\) on the other states.
+<ul>
+<li class="fragment appear">BFS and Dijkstra expand nodes with non-decreasing steps / cost.</li>
+<li class="fragment appear">But this glitch in \(h(B)\) makes \(f(S)=4\) drop down to \(f(B)=3\)</li>
+
+</ul></li>
+<li class="fragment appear">Consistency:
+<ul>
+<li class="fragment appear">\(h(n) \leq c(n, a, n') + h(n')\)</li>
+<li class="fragment appear">\(g(n) + h(n) \leq g(n) + c(n, a, n') + h(n')\)</li>
+<li class="fragment appear">\(f(n) \leq f(n')\)</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+<section id="slide-org332b63d">
+<h4 id="org332b63d">Optimality</h4>
+<ul>
+<li class="fragment appear">Is \(A^*\) finally optimal when using a consistent heuristic?
+<ul>
+<li class="fragment appear">Yes, and we can get a slightly more general result for free.</li>
+<li class="fragment appear">w-\(A^*\) is w-optimal.
+<ul>
+<li class="fragment appear">\(f_w(n) = g(s) + w*h(n)\) produces solutions no more than \(w\) times
+more expensive than the optimal.</li>
+<li class="fragment appear">This makes the fringe deform even further towards the goals.</li>
+
+</ul></li>
+
+</ul></li>
+
+</ul>
+
+</section>
+<section id="slide-orgc01a613">
+<h4 id="orgc01a613">Engineering heuristics</h4>
+<ul>
+<li class="fragment appear">We can disassemble a problem without affecting the heuristic properties.
+<ul>
+<li class="fragment appear">Removing an action/edge keeps a heuristic admissible.</li>
+<li class="fragment appear">Removing an action/edge keeps a heuristic consistent.</li>
+
+</ul></li>
+<li class="fragment appear">Can we devise a problem with more actions and solve it perfectly?
+<ul>
+<li class="fragment appear">This problem is called a relaxation.</li>
+<li class="fragment appear">Solving it with a consistent heuristic, like \(h^*\) would give us a
+consistent (and admissible) heuristic for our actual problem.</li>
+
+</ul></li>
+
+</ul>
 </section>
 </section>
 </div>
