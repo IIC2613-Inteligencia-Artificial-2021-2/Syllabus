@@ -23,11 +23,11 @@ A continuación, se muestra una tabla resumen del equipo docente de IIC2613 2021
 
 ## Foro
 
-La página de [Issues](../../issues) se utilizará como foro para preguntas.
+La página de [issues](../../issues) se utilizará como foro para preguntas.
 
 ## Videos ayudantías
 
-Los links de las grabaciones de ayudantías los encontrarán en el siguiente [link]().
+Los links de las grabaciones de ayudantías los encontrarán en el siguiente [link](./Ayudantías).
 
 ## Notas
 
