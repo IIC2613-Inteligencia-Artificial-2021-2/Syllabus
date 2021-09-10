@@ -1,9 +1,0 @@
-/* Support TODOs nicely */
-.reveal .todo {
-    color: indianred;
-}
-.reveal .done {
-    /* color: yellowgreen; */
-    visibility: hidden;
-    display: none;
-}
