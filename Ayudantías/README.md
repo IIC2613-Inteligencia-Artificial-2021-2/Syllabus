@@ -7,4 +7,3 @@ A continuación se muestra una tabla resumen de las ayudantías con su fecha de 
 | Ayudantía 1 - BFS, DFS, Dijkstra y A*              | 3 de sept.  | [Link](https://www.youtube.com/watch?v=qPhA8Dpxd7k) |
 | Cápsula A*                                         | 3 de sept.  | [Link](https://youtu.be/yRaj14YbeGM)                |
 | Ayudantía 2 - Heurísticas y búsqueda con adversario| 10 de sept. | [Link](https://www.youtube.com/watch?v=lsS1AsYoAdk) |
-| Ayudantía 3 - ASP básico en Clingo                 | 24 de sept. | [Link](https://www.youtube.com/watch?v=_a7yVr3GBOo) |
