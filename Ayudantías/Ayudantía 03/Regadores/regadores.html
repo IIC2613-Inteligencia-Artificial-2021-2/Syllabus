@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <script type="text/javascript" src="config.js"></script>
+
+    <div align="center">
+        <script>
+            document.write('<canvas id="myCanvas" align="center" width="');
+            document.write(40 * (rangeX + 1));
+            document.write('" height="');
+            document.write(40 * (rangeY + 1));
+            document.write('" style="border:2px solid #d3d3d3;">');
+        </script>
+
+        Your browser does not support the canvas element.
+        </canvas>
+
+    </div>
+
+
+    <script>
+        colors = [
+            "#000000", "#FF0000", "#808080", "#800000",
+            "#00FF00", "#0000FF", "#800080", "#008080",
+            "#9966CC", "#960018", "#4B0082",
+            "#FF00AF", "#FFBF00", "#FF4500", "#FF2400",
+            "#B71C1C", "#3E2723", "#F57F17"]
+
+        window.onload = function () {
+            drawcanvas();
+        }
+
+        function checkIfObstacle(row, col) {
+            for (let i = 0; i < obstacles.length; i++) {
+                if (row === obstacles[i][0] && col === obstacles[i][1]) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        function checkIfSprinkler(row, col) {
+            for (let i = 0; i < on.length; i++) {
+                if (row === on[i][1] && col === on[i][2]) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        function drawWetTile(row, col, color) {
+            var canvas = document.getElementById("myCanvas");
+            var ctx = canvas.getContext("2d");
+            ctx.fillStyle = color;
+            ctx.globalAlpha = 0.5;
+            ctx.fillRect(40 * row, 40 * col, 40, 40);
+            ctx.fill();
+            ctx.globalAlpha = 1.0;
+        }
+
+        function drawWetTiles(row, col, r, color) {
+            for (let i = row - r; i <= row + r; i++) {
+                if (i < 0 || i > rangeY) { continue; }
+                for (let j = col - r; j <= col + r; j++) {
+                    if (j < 0 || j > rangeX || (i === row && j === col)) { continue; }
+                    if (checkIfObstacle(i, j) || checkIfSprinkler(i, j)) { continue; }
+                    drawWetTile(i, j, color);
+                }
+            }
+        }
+
+        function drawSprinkler(row, col, color) {
+            var canvas = document.getElementById("myCanvas");
+            var ctx = canvas.getContext("2d");
+            ctx.fillStyle = color;
+            ctx.beginPath(); ctx.arc(40 * row + 20, 40 * col + 20, 15, 0, 2 * Math.PI); ctx.fill();
+            drawWetTiles(row, col, 1, color);
+        }
+
+        function drawcanvas() {
+            var canvas = document.getElementById("myCanvas");
+            var ctx = canvas.getContext("2d");
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (i = 1; i <= rangeX; i++) {
+                ctx.moveTo(40 * i, 0);
+                ctx.lineTo(40 * i, 40 * (rangeY + 1));
+            }
+            for (i = 1; i <= rangeY; i++) {
+                ctx.moveTo(0, 40 * i);
+                ctx.lineTo(40 * (rangeX + 1), 40 * i);
+            }
+
+            for (j = 0; j < obstacles.length; j++) {
+                ctx.fillRect(40 * obstacles[j][0], 40 * obstacles[j][1], 40, 40);
+            }
+
+            ctx.stroke();
+            for (let i = 0; i < on.length; i++) {
+                const element = on[i];
+                drawSprinkler(on[i][1], on[i][2], colors[on[i][0]]);
+            }
+        };
+
+    </script>
+</body>
+
+</html>
