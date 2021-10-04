@@ -2,7 +2,7 @@
 
 ## Información del curso
 
-Este es el repositorio principal del curso de Inteligencia Artificial (IIC2613).
+Este es el repositorio principal del curso de Inteligencia Artificial (IIC2613) del período 2021-2.
 
 ### Links
 
@@ -10,8 +10,10 @@ Este es el repositorio principal del curso de Inteligencia Artificial (IIC2613).
     * [Issues](https://github.com/IIC2613-Inteligencia-Artificial-2021-2/Syllabus/issues)
       * [Controles](https://github.com/IIC2613-Inteligencia-Artificial-2021-2/Syllabus/issues?q=label%3AControl)
       * Tareas
-        * [Tarea 1](https://github.com/IIC2613-Inteligencia-Artificial-2021-2/Syllabus/issues?q=label%3ATarea)
-    * [Slides](https://github.com/IIC2613-Inteligencia-Artificial-2021-2/IIC2613-2021-2-Slides)
+        * [Tarea 1](https://github.com/IIC2613-Inteligencia-Artificial-2021-2/Syllabus/issues?q=label%3A"Tarea+1")
+        * [Tarea 2](https://github.com/IIC2613-Inteligencia-Artificial-2021-2/Syllabus/issues?q=label%3A"Tarea+2")
+    * [Slides Pt1](https://github.com/IIC2613-Inteligencia-Artificial-2021-2/IIC2613-2021-2-Slides)
+    * [Slides Pt2](https://github.com/IIC2613-Inteligencia-Artificial-2021-2/Syllabus/tree/main/Slides%20Pt2)
     * [Ayudantías](./Ayudantías/README.md)
   * [Drive](https://drive.google.com/drive/folders/0AGuS7DZzNLFlUk9PVA)
     * [Clases](https://drive.google.com/drive/folders/1qXGsCiCCTzlgtgiW1Wc4azy4K8txRwc0)
@@ -21,20 +23,25 @@ Este es el repositorio principal del curso de Inteligencia Artificial (IIC2613).
 
 ### Equipo Docente
 
-| Cargo        | Nombre               | Github         |
-|--------------|----------------------|----------------|
-| Profesor     | Dietrich Daroch      | Dietr1ch       |
-| Profesor     | Álvaro Soto          |                |
-| Coordinador  | Fernando Balladares  | FeBalla        |
-| Ayudante     | Esteban Brzovic      | ebrzovic       |
-| Ayudante     | Felipe Guzmán        | vWing7         |
-| Ayudante     | Diego Caroca         | Pudindin       |
-| Ayudante     | Sergio Matamala      | Huasito-Appel  |
-| Ayudante     | Pablo Flores         | ptflores1      |
+| Cargo         | Nombre               | Github            
+|---------------|----------------------|-------------------|
+| Profesor      | Dietrich Daroch      | Dietr1ch          |
+| Profesor      | Alain Raymond        | alainray          |
+| Coordinador   | Fernando Balladares  | FeBalla           |
+| Ayudante (Pt1)| Felipe Guzmán        | vWing7            |
+| Ayudante (Pt1)| Diego Caroca         | Pudindin          |
+| Ayudante (Pt1)| Sergio Matamala      | Huasito-Appel     |
+| Ayudante (Pt1)| Pablo Flores         | ptflores1         |
+| Ayudante (Pt2)| José Manuel Opaso    | jmopaso           |
+| Ayudante (Pt2)| Sebastián Pérez      | sperezmasri       |
+| Ayudante (Pt2)| José Domínguez       | josem7            |
+| Ayudante (Pt2)| Vicente Vega         | vicentevegaulloa  |
+| Ayudante (Pt2)| Bernardita Morris    | bmorrisc          |
+| Ayudante (Pt2)| Rafael Elberg        | SugarFreeManatee  |
 
 ### Contacto
 
-Para dudas que puedan ser compartidas en público se prefiere que usen [Issues](https://github.com/IIC2613-Inteligencia-Artificial-2021-2/Syllabus/issues).
+Para dudas que puedan ser compartidas en público se prefiere que usen [*issues*](https://github.com/IIC2613-Inteligencia-Artificial-2021-2/Syllabus/issues).
 
 Cualquier duda administrativa y/o personal debe ser realizada al correo oficial del curso [iic2613@ing.puc.cl](mailto:iic2613@ing.puc.cl)
 
@@ -43,14 +50,20 @@ Cualquier duda administrativa y/o personal debe ser realizada al correo oficial 
 
 ### Tarea 1
 
-La tarea fue publicada en github, pueden obtener el enunciado desde la sección de [releases](https://github.com/IIC2613-Inteligencia-Artificial-2021-2/Assignment-1/releases).
+La tarea fue publicada en github, pueden obtener el enunciado desde la sección de [*releases*](https://github.com/IIC2613-Inteligencia-Artificial-2021-2/Assignment-1/releases).
 
-La entrega es para el miércoles 29 a las 23:59.
+La entrega es para el miércoles 29 de septiembre a las 23:59.
+
+### Tarea 2
+
+La tarea fue publicada en github, pueden obtener el enunciado desde la sección de [*releases*](https://github.com/IIC2613-Inteligencia-Artificial-2021-2/Assignment-2/releases).
+
+La entrega es para el domingo 17 de octubre a las 23:59.
 
 #### Issues
 
 Hay preguntas y aclaraciones útiles en la sección de Issues del repositorio principal.
-Se recomienda la vista de [búsqueda por labels](https://github.com/IIC2613-Inteligencia-Artificial-2021-2/Syllabus/issues?q=label%3ATarea) para también encontrar issuse cerrados.
+Se recomienda la vista de [búsqueda por *labels*](https://github.com/IIC2613-Inteligencia-Artificial-2021-2/Syllabus/issues?q=label%3ATarea) para también encontrar *issues* cerrados.
 
 
 ## Otros
