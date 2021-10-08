@@ -9,3 +9,4 @@ A continuación se muestra una tabla resumen de las ayudantías con su fecha de 
 | Ayudantía 2 - Heurísticas y búsqueda con adversario| 10 de sept. | [Link](https://www.youtube.com/watch?v=lsS1AsYoAdk) |
 | Ayudantía 3 - ASP básico en Clingo                 | 24 de sept. | [Link](https://www.youtube.com/watch?v=_a7yVr3GBOo) |
 | Ayudantía 4 - STRIPS                               | 1 de oct.   | [Link](https://www.youtube.com/watch?v=lF_3vSj9V7Q) |
+| Ayudantía 5 - STRIPS 2                             | 8 de oct.   | [Link](https://www.youtube.com/watch?v=_KAiC7gZz0o) |
