@@ -70,12 +70,13 @@ Se recomienda la vista de [búsqueda por *labels*](https://github.com/IIC2613-In
 
 ### Clonar el repositorio
 
-Para poder visualizar las *slides* correctamente deben clonar el repositorio
-recursivamente.
-Esto pueden hacerlo a través del siguiente comando,
+Para poder visualizar las *slides* correctamente deben clonar el repositorio recursivamente. Esto pueden hacerlo a través del siguiente comando:
 
 ```sh
 git clone \
   --recurse-submodules \
   https://github.com/IIC2613-Inteligencia-Artificial-2021-2/Syllabus.git
 ```
+
+### Notas
+Las notas están disponibles en [esta planilla](https://docs.google.com/spreadsheets/d/1tmL6dbWz_O31QswZhanAYpogs4VVBr22HV8ic0zCZAE/edit?usp=sharing).
