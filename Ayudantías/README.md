@@ -11,3 +11,4 @@ A continuación se muestra una tabla resumen de las ayudantías con su fecha de 
 | Ayudantía 4 - STRIPS                               | 1 de oct.   | [Link](https://www.youtube.com/watch?v=lF_3vSj9V7Q) |
 | Ayudantía 5 - STRIPS 2                             | 8 de oct.   | [Link](https://www.youtube.com/watch?v=_KAiC7gZz0o) |
 | Ayudantía 6 - Introducción al Machine Learning     | 15 de oct.  | [Link](https://www.youtube.com/watch?v=yaXD-YBdJk0) |
+| Ayudantía 7 - Árboles de Decisión                  | 29 de oct.  | [Link](https://www.youtube.com/watch?v=uZ1wx8ocThg) |
