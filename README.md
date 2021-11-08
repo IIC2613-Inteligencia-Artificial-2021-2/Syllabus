@@ -12,6 +12,7 @@ Este es el repositorio principal del curso de Inteligencia Artificial (IIC2613) 
       * Tareas
         * [Tarea 1](https://github.com/IIC2613-Inteligencia-Artificial-2021-2/Syllabus/issues?q=label%3A"Tarea+1")
         * [Tarea 2](https://github.com/IIC2613-Inteligencia-Artificial-2021-2/Syllabus/issues?q=label%3A"Tarea+2")
+        * [Tarea 3](https://github.com/IIC2613-Inteligencia-Artificial-2021-2/Syllabus/issues?q=label%3A"Tarea+3")
     * [Slides Pt1](https://github.com/IIC2613-Inteligencia-Artificial-2021-2/IIC2613-2021-2-Slides)
     * [Slides Pt2](https://github.com/IIC2613-Inteligencia-Artificial-2021-2/Syllabus/tree/main/Slides%20Pt2)
     * [Ayudantías](./Ayudantías/README.md)
@@ -59,6 +60,12 @@ La entrega es para el miércoles 29 de septiembre a las 23:59.
 La tarea fue publicada en github, pueden obtener el enunciado desde la sección de [*releases*](https://github.com/IIC2613-Inteligencia-Artificial-2021-2/Assignment-2/releases).
 
 La entrega es para el domingo 17 de octubre a las 23:59.
+
+### Tarea 3
+
+La tarea fue publicada en github, pueden obtener el enunciado desde la sección de [*releases*](https://github.com/IIC2613-Inteligencia-Artificial-2021-2/Assignment-3/releases).
+
+La entrega es para el lunes 22 de noviembre a las 23:59.
 
 #### Issues
 
