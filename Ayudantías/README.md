@@ -13,3 +13,4 @@ A continuación se muestra una tabla resumen de las ayudantías con su fecha de 
 | Ayudantía 6 - Introducción al Machine Learning     | 15 de oct.  | [Link](https://www.youtube.com/watch?v=yaXD-YBdJk0) |
 | Ayudantía 7 - Árboles de Decisión                  | 29 de oct.  | [Link](https://www.youtube.com/watch?v=uZ1wx8ocThg) |
 | Ayudantía 8 - SVM's                                | 05 de nov.  | [Link](https://www.youtube.com/watch?v=f-QlRiFKRrc) |
+| Ayudantía 9 - Redes Neuronales                     | 12 de nov.  | [Link](https://www.youtube.com/watch?v=KSIXYtKfipg) |
