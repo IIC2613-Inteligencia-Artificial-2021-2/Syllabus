@@ -16,3 +16,4 @@ A continuación se muestra una tabla resumen de las ayudantías con su fecha de 
 | Ayudantía 9 - Redes Neuronales                     | 12 de nov.  | [Link](https://www.youtube.com/watch?v=KSIXYtKfipg) |
 | Ayudantía 10 - Naive Bayes                         | 19 de nov.  | [Link](https://www.youtube.com/watch?v=nnbzmcaPVzI) |
 | Sesión de consultas T3                             | 19 de nov.  | [Link](https://www.youtube.com/watch?v=X-48F_cGCHY) |
+| Ayudantía 11 - Reinforcement Learning              | 26 de nov.  | [Link](https://www.youtube.com/watch?v=vipopGbLjFA) |
