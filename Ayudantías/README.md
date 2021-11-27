@@ -17,3 +17,7 @@ A continuación se muestra una tabla resumen de las ayudantías con su fecha de 
 | Ayudantía 10 - Naive Bayes                         | 19 de nov.  | [Link](https://www.youtube.com/watch?v=nnbzmcaPVzI) |
 | Sesión de consultas T3                             | 19 de nov.  | [Link](https://www.youtube.com/watch?v=X-48F_cGCHY) |
 | Ayudantía 11 - Reinforcement Learning              | 26 de nov.  | [Link](https://www.youtube.com/watch?v=vipopGbLjFA) |
+| Cápsula T4 (1) - Introducción a visión artificial  | 26 de nov.  | [Link](https://www.youtube.com/watch?v=bi82Zm-KnB0) |
+| Cápsula T4 (2) - Convolución                       | 26 de nov.  | [Link](https://www.youtube.com/watch?v=tn8COVsu_6Y) |
+| Cápsula T4 (3) - Redes Neuronales Convolucionales  | 26 de nov.  | [Link](https://www.youtube.com/watch?v=_21bzePmNVI) |
+| Cápsula T4 (4) - Aumento de datos                  | 26 de nov.  | [Link](https://www.youtube.com/watch?v=mE-D4iKxduA) |
