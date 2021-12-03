@@ -21,3 +21,4 @@ A continuación se muestra una tabla resumen de las ayudantías con su fecha de 
 | Cápsula T4 (2) - Convolución                       | 26 de nov.  | [Link](https://www.youtube.com/watch?v=tn8COVsu_6Y) |
 | Cápsula T4 (3) - Redes Neuronales Convolucionales  | 26 de nov.  | [Link](https://www.youtube.com/watch?v=_21bzePmNVI) |
 | Cápsula T4 (4) - Aumento de datos                  | 26 de nov.  | [Link](https://www.youtube.com/watch?v=mE-D4iKxduA) |
+| Sesión de consultas T4                             | 03 de dic.  | [Link](https://www.youtube.com/watch?v=GIbaq1xX1oI) |
